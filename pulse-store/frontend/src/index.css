@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-white font-body antialiased;
+}
+
+::selection {
+  background: #d4ff3f;
+  color: #0a0a0b;
+}
+
+/* Slim dark scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2c2c31 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2c2c31;
+  border-radius: 8px;
+}
+
+/* Marquee strip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Hero glow */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+/* Fade-up entrance */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.55s ease-out both;
+}
+
+/* Slide-over drawer */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #17171b 25%, #222228 50%, #17171b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* Toast */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-toast-in {
+  animation: toast-in 0.25s ease-out both;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  opacity: 0.4;
+}

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: bb24-store
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: JWT_SECRET
+        generateValue: true
+    # SQLite lives at ./data/store.db. On Render's free tier the filesystem is
+    # ephemeral: the seeded DB ships with the repo (force-added to git) so the
+    # store boots with full data, but orders/users created at runtime are lost
+    # on redeploy/restart. For persistence add a Render Disk (paid) mounted at
+    # /opt/render/project/src/data.
